@@ -3,10 +3,18 @@ import { motion } from 'framer-motion';
 import Logo from './Logo';
 
 const links = [
+  { href: '#ueberuns',    label: 'Über uns' },
   { href: '#speisekarte', label: 'Speisekarte' },
   { href: '#galerie',     label: 'Galerie' },
+  { href: '#reservierung',label: 'Reservierung' },
   { href: '#kontakt',     label: 'Kontakt' },
 ];
+
+const RED = '#8B1A1A';
+const RED_DK = '#6B1212';
+const DARK = '#1C0E05';
+const DARK2 = '#2C1608';
+const GOLD = '#C09020';
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,8 +39,8 @@ export default function Nav() {
           height: 80, display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', padding: '0 5%',
           background: '#fff',
-          borderBottom: '1px solid #E8D9C0',
-          boxShadow: scrolled ? '0 2px 20px rgba(26,10,6,0.08)' : 'none',
+          borderBottom: '1px solid #E4D5B8',
+          boxShadow: scrolled ? '0 2px 20px rgba(28,14,5,0.08)' : 'none',
           transition: 'box-shadow 0.3s ease',
         }}
       >
@@ -43,10 +51,6 @@ export default function Nav() {
           style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', cursor: 'pointer' }}
         >
           <Logo variant="nav" />
-          <div>
-            <div style={{ fontFamily:"'Playfair Display SC',Georgia,serif", fontSize: '1.05rem', fontWeight: 700, color: '#1A0A06', lineHeight: 1.1 }}>First Kebap</div>
-            <div style={{ fontSize: '0.68rem', color: '#C8960A', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>Duisburg</div>
-          </div>
         </motion.a>
 
         {/* Nav links — desktop only */}
@@ -58,9 +62,9 @@ export default function Nav() {
               transition={{ delay: 0.15 + i * 0.07, duration: 0.45, ease: [0.16,1,0.3,1] }}
             >
               <motion.a href={link.href}
-                whileHover={{ color: '#C8960A' }}
+                whileHover={{ color: GOLD }}
                 transition={{ duration: 0.15 }}
-                style={{ color: '#2E1409', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
+                style={{ color: DARK2, textDecoration: 'none', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
               >{link.label}</motion.a>
             </motion.li>
           ))}
@@ -68,18 +72,18 @@ export default function Nav() {
 
         {/* CTAs — desktop only */}
         <div className="nav-ctas-desktop" style={{ gap: '0.6rem', alignItems: 'center' }}>
-          <motion.a href="tel:01632364246"
+          <motion.a href="tel:+4920659004949"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            style={{ border: '1.5px solid #C0322A', color: '#C0322A', textDecoration: 'none', padding: '0.55rem 1.2rem', borderRadius: 4, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
+            style={{ border: `1.5px solid ${RED}`, color: RED, textDecoration: 'none', padding: '0.55rem 1.2rem', borderRadius: 4, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
           >Anrufen</motion.a>
-          <motion.a href="#speisekarte"
-            whileHover={{ scale: 1.04, background: '#9A2420' }}
+          <motion.a href="#reservierung"
+            whileHover={{ scale: 1.04, background: RED_DK }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            style={{ background: '#C0322A', color: '#fff', textDecoration: 'none', padding: '0.6rem 1.4rem', borderRadius: 4, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
-          >Online bestellen</motion.a>
+            style={{ background: RED, color: '#fff', textDecoration: 'none', padding: '0.6rem 1.4rem', borderRadius: 4, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}
+          >Reservierung</motion.a>
         </div>
 
         {/* Hamburger — mobile only */}
@@ -101,13 +105,13 @@ export default function Nav() {
           <a key={link.href} href={link.href} onClick={close}>{link.label}</a>
         ))}
         <div className="mobile-ctas">
-          <a href="tel:01632364246"
-            style={{ border: '1.5px solid #C0322A', color: '#C0322A' }}
+          <a href="tel:+4920659004949"
+            style={{ border: `1.5px solid ${RED}`, color: RED }}
           >Anrufen</a>
-          <a href="#speisekarte"
+          <a href="#reservierung"
             onClick={close}
-            style={{ background: '#C0322A', color: '#fff' }}
-          >Online bestellen</a>
+            style={{ background: RED, color: '#fff' }}
+          >Reservierung</a>
         </div>
       </div>
     </>

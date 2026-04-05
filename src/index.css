@@ -2,18 +2,19 @@
 
 :root {
   --bg:      #FDFAF5;
-  --bg2:     #F5EDD8;
-  --bg3:     #EDE0C4;
+  --bg2:     #F5EEE0;
+  --bg3:     #EDE1C8;
   --card:    #FFFFFF;
-  --border:  #E8D9C0;
-  --red:     #C0322A;
-  --red-dk:  #9A2420;
-  --red-dim: rgba(192,50,42,0.08);
-  --dark:    #1A0A06;
-  --dark2:   #2E1409;
-  --muted:   #8A6A52;
+  --border:  #E4D5B8;
+  --red:     #8B1A1A;
+  --red-dk:  #6B1212;
+  --red-dim: rgba(139,26,26,0.08);
+  --gold:    #C09020;
+  --dark:    #1C0E05;
+  --dark2:   #2C1608;
+  --muted:   #8A6A4A;
   --muted2:  #B8997A;
-  --text:    #1A0A06;
+  --text:    #1C0E05;
 }
 
 html { scroll-behavior: smooth; }
@@ -50,7 +51,7 @@ body {
   display: block;
   width: 100%;
   height: 2px;
-  background: #1A0A06;
+  background: #1C0E05;
   border-radius: 2px;
   transition: transform 0.28s ease, opacity 0.2s ease;
 }
@@ -67,16 +68,16 @@ body {
   left: 0;
   right: 0;
   background: #fff;
-  border-bottom: 1px solid #E8D9C0;
+  border-bottom: 1px solid #E4D5B8;
   padding: 1.2rem 5%;
   flex-direction: column;
   gap: 0;
   z-index: 99;
-  box-shadow: 0 8px 24px rgba(26,10,6,0.12);
+  box-shadow: 0 8px 24px rgba(28,14,5,0.12);
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  color: #2E1409;
+  color: #2C1608;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;

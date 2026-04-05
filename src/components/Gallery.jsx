@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion';
 
 const photos = [
-  { src: '/images/fk3.png', alt: 'Döner Gerichte', span: 2 },
-  { src: '/images/fk4.png', alt: 'Frisch zubereitet', span: 1 },
-  { src: '/images/salat.png', alt: 'Frischer Salat', span: 3 },
+  { src: '/images/g1.jpg', alt: 'Ocakbaşı Grill', span: 2 },
+  { src: '/images/g2.jpg', alt: 'Frisch gegrillt', span: 1 },
+  { src: '/images/g3.jpg', alt: 'Kebap Spezialitäten', span: 1 },
+  { src: '/images/g4.jpg', alt: 'Meze & Vorspeisen', span: 1 },
+  { src: '/images/g5.jpg', alt: 'Tischkultur', span: 1 },
 ];
 
 export default function Gallery() {
   return (
-    <section id="galerie" style={{ padding: '80px 5%', background: '#F5EDD8' }}>
+    <section id="galerie" style={{ padding: '80px 5%', background: '#F5EEE0' }}>
       <SectionLabel>Galerie</SectionLabel>
-      <SectionTitle>Frisch aus unserer Küche</SectionTitle>
+      <SectionTitle>Direkt vom Ocakbaşı</SectionTitle>
       <Divider />
       <motion.div
         className="gallery-grid"
@@ -23,7 +25,7 @@ export default function Gallery() {
             variants={{ hidden:{ opacity:0, y:24, scale:0.97 }, show:{ opacity:1, y:0, scale:1, transition:{ duration:0.6, ease:[0.16,1,0.3,1] } } }}
             whileHover={{ scale: 1.02, zIndex: 2 }}
             transition={{ type:'spring', stiffness:300, damping:25 }}
-            style={{ borderRadius:8, overflow:'hidden', aspectRatio: span>1?'16/9':'4/5', position:'relative', boxShadow:'0 4px 20px rgba(26,10,6,0.1)' }}
+            style={{ borderRadius:8, overflow:'hidden', aspectRatio: span>1?'16/9':'4/5', position:'relative', boxShadow:'0 4px 20px rgba(28,14,5,0.1)' }}
           >
             <motion.img src={src} alt={alt}
               whileHover={{ scale: 1.06 }} transition={{ duration:0.5, ease:[0.16,1,0.3,1] }}
@@ -37,13 +39,13 @@ export default function Gallery() {
 }
 
 export function SectionLabel({ children }) {
-  return <p style={{ fontSize:'0.72rem', fontWeight:700, letterSpacing:'0.16em', textTransform:'uppercase', color:'#C8960A', marginBottom:'0.5rem' }}>{children}</p>;
+  return <p style={{ fontSize:'0.72rem', fontWeight:700, letterSpacing:'0.16em', textTransform:'uppercase', color:'#C09020', marginBottom:'0.5rem' }}>{children}</p>;
 }
 
 export function SectionTitle({ children }) {
-  return <h2 style={{ fontFamily:"'Playfair Display SC','Playfair Display',Georgia,serif", fontSize:'clamp(1.8rem,3.5vw,2.6rem)', fontWeight:700, color:'#1A0A06', marginBottom:'0.8rem' }}>{children}</h2>;
+  return <h2 style={{ fontFamily:"'Playfair Display SC','Playfair Display',Georgia,serif", fontSize:'clamp(1.8rem,3.5vw,2.6rem)', fontWeight:700, color:'#1C0E05', marginBottom:'0.8rem' }}>{children}</h2>;
 }
 
 export function Divider() {
-  return <div style={{ width:40, height:3, background:'#C0322A', borderRadius:2, margin:'0.8rem 0 2.5rem' }} />;
+  return <div style={{ width:40, height:3, background:'#8B1A1A', borderRadius:2, margin:'0.8rem 0 2.5rem' }} />;
 }
