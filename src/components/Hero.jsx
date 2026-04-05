@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="home" style={{ position: 'relative', width: '100%', marginTop: 80, overflow: 'hidden' }}>
 
       {/* Full-width video background */}
-      <div style={{ position: 'relative', aspectRatio: '16/7', minHeight: 420 }}>
+      <div className="hero-video-wrap" style={{ position: 'relative', aspectRatio: '16/7', minHeight: 420 }}>
         <video
           autoPlay
           muted
@@ -100,6 +100,7 @@ function InfoBar() {
     >
       {items.map(({ label, value }, i) => (
         <motion.div key={label}
+          className="infobar-item"
           variants={{ hidden:{ opacity:0, y:10 }, show:{ opacity:1, y:0, transition:{ duration:0.45, ease:[0.16,1,0.3,1] } } }}
           style={{
             padding: '1.2rem 2.5rem', textAlign: 'center',

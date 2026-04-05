@@ -31,3 +31,105 @@ body {
 #root { width: 100%; min-height: 100vh; }
 
 ::selection { background: var(--red); color: #fff; }
+
+/* ─── Nav: hamburger button (hidden on desktop) ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 200;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #1A0A06;
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.2s ease;
+}
+
+/* Nav: desktop link list and CTA bar */
+.nav-links-desktop { display: flex; }
+.nav-ctas-desktop  { display: flex; }
+
+/* Nav: fullscreen mobile dropdown */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid #E8D9C0;
+  padding: 1.2rem 5%;
+  flex-direction: column;
+  gap: 0;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(26,10,6,0.12);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: #2E1409;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #F0E5D0;
+}
+.mobile-menu .mobile-ctas {
+  display: flex;
+  gap: 0.6rem;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+.mobile-menu .mobile-ctas a {
+  flex: 1;
+  text-align: center;
+  border-bottom: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+}
+
+/* ─── Gallery responsive grid ─── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+.gallery-item-span-2 { grid-column: span 2; }
+.gallery-item-span-3 { grid-column: span 3; }
+
+/* ─── Mobile breakpoint ─── */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-hamburger       { display: flex; }
+  .nav-links-desktop   { display: none !important; }
+  .nav-ctas-desktop    { display: none !important; }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-item-span-2,
+  .gallery-item-span-3 {
+    grid-column: span 1;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  /* Hero: reduce min-height on small screens */
+  .hero-video-wrap { min-height: 300px !important; }
+
+  /* InfoBar: hide separator lines when items wrap */
+  .infobar-item { border-right: none !important; }
+}

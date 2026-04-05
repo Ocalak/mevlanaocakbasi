@@ -13,16 +13,17 @@ export default function Gallery() {
       <SectionTitle>Frisch aus unserer Küche</SectionTitle>
       <Divider />
       <motion.div
+        className="gallery-grid"
         initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }}
         variants={{ hidden:{}, show:{ transition:{ staggerChildren:0.08 } } }}
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginTop: 8 }}
       >
         {photos.map(({ src, alt, span }) => (
           <motion.div key={src}
+            className={span > 1 ? `gallery-item-span-${span}` : undefined}
             variants={{ hidden:{ opacity:0, y:24, scale:0.97 }, show:{ opacity:1, y:0, scale:1, transition:{ duration:0.6, ease:[0.16,1,0.3,1] } } }}
             whileHover={{ scale: 1.02, zIndex: 2 }}
             transition={{ type:'spring', stiffness:300, damping:25 }}
-            style={{ gridColumn: span>1?`span ${span}`:undefined, borderRadius:8, overflow:'hidden', aspectRatio: span>1?'16/9':'4/5', position:'relative', boxShadow:'0 4px 20px rgba(26,10,6,0.1)' }}
+            style={{ borderRadius:8, overflow:'hidden', aspectRatio: span>1?'16/9':'4/5', position:'relative', boxShadow:'0 4px 20px rgba(26,10,6,0.1)' }}
           >
             <motion.img src={src} alt={alt}
               whileHover={{ scale: 1.06 }} transition={{ duration:0.5, ease:[0.16,1,0.3,1] }}
