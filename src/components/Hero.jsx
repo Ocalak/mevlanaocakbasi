@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const VIDEOS = [
   { src: '/images/hero.mp4', label: 'Video 1' },
   { src: '/images/dks1.mp4', label: 'Video 2' },
+  { src: '/images/burger.mp4', label: 'Video 3' },
 ];
 
 export default function Hero() {
