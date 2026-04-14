@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { ShoppingBag } from 'lucide-react';
 import Logo from './Logo';
+import { useCart } from '../context/CartContext';
 
 const links = [
   { href: '#ueberuns',    label: 'Über uns' },
@@ -19,6 +21,7 @@ const GOLD = '#C09020';
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { totalItems, toggleCart } = useCart();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -72,6 +75,30 @@ export default function Nav() {
 
         {/* CTAs — desktop only */}
         <div className="nav-ctas-desktop" style={{ gap: '0.6rem', alignItems: 'center' }}>
+          <motion.button
+            onClick={toggleCart}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={{ 
+              background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem', 
+              position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' 
+            }}
+          >
+            <ShoppingBag size={22} color={DARK} />
+            {totalItems > 0 && (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                style={{
+                  position: 'absolute', top: 0, right: 0,
+                  background: RED, color: '#fff', fontSize: '0.65rem',
+                  fontWeight: 700, width: '16px', height: '16px',
+                  borderRadius: '50%', display: 'flex', alignItems: 'center',
+                  justifyContent: 'center', border: '1.5px solid #fff'
+                }}
+              >{totalItems}</motion.span>
+            )}
+          </motion.button>
           <motion.a href="tel:+4920659004949"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
@@ -86,17 +113,45 @@ export default function Nav() {
           >Reservierung</motion.a>
         </div>
 
-        {/* Hamburger — mobile only */}
-        <button
-          className="nav-hamburger"
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
-          aria-expanded={menuOpen}
-        >
-          <span style={{ transform: menuOpen ? 'rotate(45deg) translateY(8px)' : 'none' }} />
-          <span style={{ opacity: menuOpen ? 0 : 1 }} />
-          <span style={{ transform: menuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none' }} />
-        </button>
+        {/* Mobile icons area */}
+        <div style={{ display: 'none' }} className="nav-mobile-icons">
+          <motion.button
+            onClick={toggleCart}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={{ 
+              background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem', 
+              position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              marginRight: '0.5rem'
+            }}
+          >
+            <ShoppingBag size={24} color={DARK} />
+            {totalItems > 0 && (
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                style={{
+                  position: 'absolute', top: 2, right: 2,
+                  background: RED, color: '#fff', fontSize: '0.65rem',
+                  fontWeight: 700, width: '16px', height: '16px',
+                  borderRadius: '50%', display: 'flex', alignItems: 'center',
+                  justifyContent: 'center', border: '1.5px solid #fff'
+                }}
+              >{totalItems}</motion.span>
+            )}
+          </motion.button>
+          {/* Hamburger — mobile only */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+            aria-expanded={menuOpen}
+          >
+            <span style={{ transform: menuOpen ? 'rotate(45deg) translateY(8px)' : 'none' }} />
+            <span style={{ opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ transform: menuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none' }} />
+          </button>
+        </div>
       </motion.nav>
 
       {/* Mobile dropdown menu */}

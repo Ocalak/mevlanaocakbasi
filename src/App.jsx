@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import Reservation from './components/Reservation';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Cart from './components/Cart';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Reservation />
       <Contact />
       <Footer />
+      <Cart />
     </>
   );
 }
